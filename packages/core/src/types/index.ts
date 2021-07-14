@@ -3,6 +3,8 @@ export type ScalarSchema = {
   type?: 'string' | 'boolean' | 'number' | 'integer' | 'object' | 'array';
   items?: ScalarSchema;
   enum?: string[];
+  constraints?: ScalarConstraints;
+  referenceable?: boolean;
   isExample?: boolean;
   directResolveAs?: string;
 };
@@ -14,6 +16,14 @@ export type NormalizedScalarSchema = {
   enum?: string[];
   directResolveAs?: NormalizedNodeType;
   resolvable: boolean;
+  constraints?: ScalarConstraints;
+};
+
+export type ScalarConstraints = {
+  minValue?: number;
+  maxValue?: number;
+  minLength?: number;
+  maxLength?: number;
 };
 
 export type NodeType = {
